@@ -1,0 +1,2 @@
+include: "rules/download-data.smk"
+include: "rules/process-data.smk"
