@@ -4,6 +4,7 @@ resources/msk_impact_2017
 resources/pancan_pcawg_2020
 resources/NikZainal-breast_cancer.csv
 resources/PCAWG.public.maf.gz
+results/signeR-replication/*.netcdf
 
 # Log files
 .snakemake

@@ -48,10 +48,10 @@ def update_hyperparams_Dirichlet(alpha, proportions, prior_lambda):
         (exponential_logp - prev_exponential_logp) +
         (forward_logp - backward_logp)
         )
-    return aesara.ifelse(srng.uniform() < np.exp(log_acceptance_prob), alpha_proposal, alpha)
+    return at.switch(at.lt(srng.uniform(), np.exp(log_acceptance_prob)), alpha_proposal, alpha)
 
 def update_Exponential_hyperparams(alpha):
-    return srng.gamma(alpha.shape.prod()+1, alpha.sum()+1)
+    return srng.gamma(alpha.shape.prod()+1, alpha.sum()+1).astype("float32")
 
 def Sampler(counts_df, step, mcmc_steps=500, k=5):
     """
